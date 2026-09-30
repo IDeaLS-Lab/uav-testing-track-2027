@@ -1,0 +1,97 @@
+{
+ "round": "Reference generators",
+ "budget": "20 scenarios, 3 evaluations each",
+ "scorer": "f11_score_v1",
+ "arms": [
+  {
+   "name": "geometric",
+   "label": "Geometry rule",
+   "strategy": "Fixed rule: narrow lanes, poles near the route, low altitude",
+   "runs": [
+    0.3545,
+    0.2763,
+    0.2814
+   ],
+   "metrics": {
+    "mech_rate": 0.304,
+    "mechanism": 0.889,
+    "severity": 0.674,
+    "crash": 0.5,
+    "output_div": 0.297,
+    "input_div": 0.654,
+    "validity": 1.0
+   },
+   "flights": 60,
+   "place": 1,
+   "submitted_by": "Sample tool"
+  },
+  {
+   "name": "ml",
+   "label": "Learned proposer",
+   "strategy": "Gradient boosting trained on flown outcomes",
+   "runs": [
+    0.373,
+    0.3401,
+    0.3488
+   ],
+   "metrics": {
+    "mech_rate": 0.354,
+    "mechanism": 0.889,
+    "severity": 0.54,
+    "crash": 0.6,
+    "output_div": 0.307,
+    "input_div": 0.582,
+    "validity": 1.0
+   },
+   "flights": 60,
+   "place": 1,
+   "submitted_by": "Sample tool"
+  },
+  {
+   "name": "dl",
+   "label": "Neural network",
+   "strategy": "Multilayer perceptron trained on the same outcomes",
+   "runs": [
+    0.3226,
+    0.3459,
+    0.2325
+   ],
+   "metrics": {
+    "mech_rate": 0.3,
+    "mechanism": 0.778,
+    "severity": 0.572,
+    "crash": 0.499,
+    "output_div": 0.296,
+    "input_div": 0.442,
+    "validity": 0.933
+   },
+   "flights": 56,
+   "place": 1,
+   "submitted_by": "Sample tool"
+  },
+  {
+   "name": "random",
+   "label": "Random sampler",
+   "strategy": "Uniform over the legal bounds",
+   "runs": [
+    0.2917,
+    0.375,
+    0.25
+   ],
+   "metrics": {
+    "mech_rate": 0.306,
+    "mechanism": 0.722,
+    "severity": 0.646,
+    "crash": 0.25,
+    "output_div": 0.324,
+    "input_div": 0.59,
+    "validity": 1.0
+   },
+   "flights": 60,
+   "place": 1,
+   "submitted_by": "Sample tool"
+  }
+ ],
+ "entries": [],
+ "tie_note": "All four lie within the noise band of the leader and share the first placement, so they are listed alphabetically."
+}
