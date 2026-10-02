@@ -41,7 +41,9 @@ Tentative, following the ICST 2027 Challenge Competition Track schedule. Deadlin
 
 ![Evaluation pipeline](docs/figures/workflow.png)
 
-The generator runs on a seed that is not disclosed in advance and writes twenty scenarios. `validate.py` checks them before any simulation time is spent. Each accepted scenario is flown three times, sixty flights in all, with a limit of 1320 s per flight including simulator start-up. A flight without a usable record counts as invalid for that repeat and is not re-flown.
+Each submission is evaluated as it arrives: the generator runs on a seed that is not disclosed in advance and writes twenty scenarios. `validate.py` checks them before any simulation time is spent. Each accepted scenario is flown three times, sixty flights in all, with a limit of 1320 s per flight including simulator start-up. A flight without a usable record counts as invalid for that repeat and is not re-flown.
+
+Scores appear on the live scoreboard of the track site as soon as they are computed. A team may submit up to a maximum number of times, announced when the competition opens. After the deadline each team's best-scoring submission is evaluated again on a new undisclosed seed; that evaluation decides the final ranking, so a score that was high by chance on the live board does not carry over.
 
 The system under test is the same for every submission, so a difference in score reflects a difference between generators:
 
@@ -199,7 +201,7 @@ The full collection, with depth, maps, autopilot logs and scene files (336 scena
 
 1. Build the generator from `starter_kit/` and check it with `validate.py`, `preflight.py` and, if you like, `estimate.py`.
 2. Run the container twice on one seed and confirm that `md5sum out/submission.json` matches.
-3. Open a pull request that adds `submissions/<team-name>/` with the Dockerfile, `generate.py`, any files the image needs, and a `README.md` of about one page describing the approach. The team name must be unique; do not modify other folders.
+3. Open a pull request that adds `submissions/<team-name>/` with the Dockerfile, `generate.py`, any files the image needs, and a `README.md` of about one page describing the approach. The team name must be unique; do not modify other folders. Every evaluated submission counts toward the team's limit.
 
 Submissions close on 15 January 2027, anywhere on Earth. Participating teams may be invited to submit a tool paper of 2 to 4 pages, including references, in the ICST format. Results are presented at ICST 2027.
 
