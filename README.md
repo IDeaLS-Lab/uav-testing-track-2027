@@ -220,6 +220,6 @@ Submissions close on 15 January 2027, anywhere on Earth. Participating teams may
 
 ## Organizers and contact
 
-Prakash Aryan, Claudia Ceci, Roberto Riccio, Syed Shaihan, Mohammad Sabouri and Yahya Momtaz.
+Prakash Aryan, Claudia Ceci, Roberto Riccio, Syed Shaihan, Mohammad Sabouri and Yahya Momtaz, Sebastiano Panichella.
 
 Open an issue here for questions about the rules, the starter kit or the evaluation. Anything that would reveal an approach to other entrants should be raised with the organizers privately.
