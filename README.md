@@ -2,7 +2,7 @@
 
 A tool competition on test scenario generation for autonomous UAVs, proposed for the [ICST 2027 Challenge Competition Track](https://conf.researchr.org/track/icst-2027/icst-2027-challenge-competition-track).
 
-A submission is a **scenario generator**. It writes forest scenarios: a route, the width of the lane cleared along it, poles placed near the route, tree density, wind, speed and altitude. Each scenario is flown in Isaac Sim by a fixed autonomy stack, and generators are ranked by the **distinct failure mechanisms** their scenarios reach.
+A submission is a **scenario generator**. It writes forest scenarios: a route, the width of the lane cleared along it, poles placed near the route, tree density, wind, speed and altitude. Each scenario is flown in Isaac Sim by a fixed autonomy stack. Generators are ranked by the **distinct failure mechanisms** their scenarios reach.
 
 Track site: **https://ideals-lab.github.io/uav-testing-track-2027/**
 
@@ -75,7 +75,7 @@ A failure is a **collision** between the vehicle and the scene's collision geome
 
 ![Failure mechanisms and failure breadth](docs/figures/failure_mechanisms.png)
 
-The rank key is **failure breadth** (`mech_rate`). Coverage of the twelve mechanisms is computed separately for tight lanes (4.5 m and below) and wide lanes, and the two are averaged:
+The rank key is **failure breadth** (`mech_rate`). Coverage of the twelve mechanisms is computed separately for tight lanes (4.5 m and below) and for wide lanes, then the two are averaged:
 
 ```
 breadth = mean over the two bands of ( mean over the 12 mechanisms of min(1, sqrt(r / 0.10)) )
@@ -96,7 +96,7 @@ Eight diagnostics are reported with every score. There is no weighted total.
 | `input_div` | spread of the declared scenario parameters |
 | `validity` | share of the twenty scenarios whose flight produced a usable record, averaged over the evaluations |
 
-The validator is the only gate: a submission it rejects is not flown. Entries are ordered by failure breadth averaged over the three evaluations, and an entry within the noise band of a placement's leader shares that placement. Ties are not broken, and entries inside a shared placement are listed alphabetically. The band is published with the board. For a pair of entries it is the half-width of the 95% Welch t interval for the difference of their mean breadths over three evaluations; between the sample tools it ranges from 0.094 to 0.146, and the board uses the widest, 0.146. A band below 0.094 is used only if more than three independent evaluations support it.
+The validator is the only gate: a submission it rejects is not flown. Entries are ordered by failure breadth averaged over the three evaluations; an entry within the noise band of a placement's leader shares that placement. Ties are not broken. Entries inside a shared placement are listed alphabetically. The band is published with the board. For a pair of entries it is the half-width of the 95% Welch t interval for the difference of their mean breadths over three evaluations; between the sample tools it ranges from 0.094 to 0.146. The board uses the widest, 0.146. A band below 0.094 is used only if more than three independent evaluations support it.
 
 The scorer and the leaderboard rule used at evaluation are in `scoring/` (`f11_score_v1.py` and `f11_leaderboard_v1.py`). They read the per-flight records, which are released with the results after the final evaluation, so the ranking can be recomputed independently.
 
@@ -166,7 +166,7 @@ with open("/out/submission.json", "w") as f:
 
 This example passes `validate.py`, but its straight routes have no turns and no poles, so it reaches few mechanisms. `starter_kit/generate.py` builds routes with turns and places poles in the lane.
 
-A scenario looks like this. `seed` selects the procedural forest, `corridor` is the width of the lane cleared along the route, and `patrol` is the commanded route:
+A scenario looks like this. `seed` selects the procedural forest, `corridor` is the width of the lane cleared along the route and `patrol` is the commanded route:
 
 ```json
 {
@@ -181,7 +181,7 @@ A scenario looks like this. `seed` selects the procedural forest, `corridor` is 
 ### Checking before you submit
 
 - `validate.py` is the validator used at evaluation; a rejection there rejects the submission.
-- `preflight.py` reports what can be measured without flying: `input_div` exactly, how the scenarios divide between the two lane bands, how close the poles sit to the route, and the tightest free lateral width.
+- `preflight.py` reports what can be measured without flying: `input_div` exactly, how the scenarios divide between the two lane bands, how close the poles sit to the route and the tightest free lateral width.
 - `estimate.py` approximates the rank key and crash rate from the released flights. Against seven generators flown at the full budget it was off by 0.07 on average and by up to 0.16, so it separates large differences only. The score comes only from the evaluation flights in Isaac Sim.
 
 ### Examples
@@ -224,7 +224,7 @@ The full collection, with depth images, maps, autopilot logs and scene files (33
 
 1. Build the generator from `starter_kit/` and check it with `validate.py`, `preflight.py` and, if you like, `estimate.py`.
 2. Run the container twice on one seed and confirm that `md5sum out/submission.json` matches.
-3. Open a pull request that adds `submissions/<team-name>/` with the Dockerfile, `generate.py`, any files the image needs, and a `README.md` of about one page describing the approach. The team name must be unique; do not modify other folders. Every evaluated submission counts toward the team's limit.
+3. Open a pull request that adds `submissions/<team-name>/` with the Dockerfile, `generate.py`, any files the image needs and a `README.md` of about one page describing the approach. The team name must be unique; do not modify other folders. Every evaluated submission counts toward the team's limit.
 
 Submissions close on 15 January 2027, anywhere on Earth. Participating teams may be invited to submit a tool paper of 2 to 4 pages, including references, in the ICST format. Results are presented at ICST 2027.
 
