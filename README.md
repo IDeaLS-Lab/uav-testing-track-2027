@@ -32,7 +32,9 @@ Tentative, following the ICST 2027 Challenge Competition Track schedule. Deadlin
 | milestone | date |
 | --- | --- |
 | competition opens | 1 November 2026 |
+| live scoring of submissions | from the opening to the submission deadline |
 | submission deadline | 15 January 2027 |
+| final re-evaluation of each team's best submission | between the deadline and the notification |
 | notification to participants | 15 February 2027 |
 | tool papers and competition report | 28 February 2027 |
 | camera-ready | 7 March 2027 |
