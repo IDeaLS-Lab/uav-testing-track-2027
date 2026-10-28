@@ -241,7 +241,15 @@ Submissions close on 15 January 2027, anywhere on Earth. Participating teams may
 
 ## Organizers and contact
 
-Prakash Aryan, Claudia Ceci, Roberto Riccio, Syed Shaihan, Mohammad Sabouri and Yahya Momtaz, Sebastiano Panichella.
+| organizer | email |
+| --- | --- |
+| Prakash Aryan (AI4I and University of Bern) | prakash.aryan@ai4i.it |
+| Sebastiano Panichella (AI4I and University of Bern) | sebastiano.panichella@ai4i.it |
+| Claudia Ceci (AI4I) | claudia.ceci@ai4i.it |
+| Roberto Riccio (AI4I) | roberto.riccio@ai4i.it |
+| Syed Shaihan (AI4I) | syed.shaihan@ai4i.it |
+| Mohammad Sabouri (AI4I) | mohammad.sabouri@ai4i.it |
+| Yahya Momtaz (AI4I) | yahya.momtaz@ai4i.it |
 
 Open an issue here for questions about the rules, the starter kit or the evaluation. Anything that would reveal an approach to other entrants should be raised with the organizers privately.
 
