@@ -183,7 +183,7 @@ A scenario looks like this. `seed` selects the procedural forest, `corridor` is 
 ### Examples
 
 - `examples/random_baseline/` is the smallest generator that passes the validator. It fixes the corridor at 6.0 m, so every scenario falls in the wide band and half the rank key is lost.
-- `examples/svm_generator/` shows how to use the training data: a classifier is fitted locally (`python3 train.py ../../data/train/manifest.jsonl -o model.json`), exported as JSON and baked into the image. It places every scenario in the tight band and loses the other half.
+- `examples/svm_generator/` shows how to use the training data: a classifier is fitted locally (`pip install -r requirements.txt`, which installs numpy and scikit-learn, then `python3 train.py ../../data/train/manifest.jsonl -o model.json`), exported as JSON and baked into the image. The image itself needs neither package. It places every scenario in the tight band and loses the other half.
 
 ## Rules
 
