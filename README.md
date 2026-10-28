@@ -214,9 +214,9 @@ Training and pre-processing are allowed beforehand, for example on `data/train`,
 
 ## Data
 
-`data/train/manifest.jsonl` holds 357 flight records: the scenario flown, the route, the obstacles, the outcome, and for each collision the mechanisms it reached (null when the contact record could not be read). `data/train/splits.json` records the fixed train and validation split. This is the whole training signal.
+`data/train/manifest.jsonl` holds 357 flight records: the scenario flown, the route, the obstacles and the outcome. For each collision it also lists the mechanisms reached (null when the contact record could not be read). `data/train/splits.json` records the fixed train and validation split. This is the whole training signal.
 
-The full collection, with depth, maps, autopilot logs and scene files (336 scenarios, 17.8 GB), is archived at [`merabro/uav-dataset-coverage`](https://huggingface.co/datasets/merabro/uav-dataset-coverage). It is not needed to write a generator; access is granted on request.
+The full collection, with depth images, maps, autopilot logs and scene files (336 scenarios, 17.8 GB), is on Hugging Face at [`merabro/uav-perception-testing-track-2027`](https://huggingface.co/datasets/merabro/uav-perception-testing-track-2027). It is not needed to write a generator. To get access, open the dataset page while logged in to Hugging Face and fill in the short request form (name, affiliation and intended use); the organizers approve each request by hand.
 
 ## Submitting
 
