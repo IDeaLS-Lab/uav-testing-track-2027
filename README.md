@@ -210,6 +210,10 @@ Like the UAV testing tracks held at SBFT and ICST since 2024 ([SBFT 2024](https:
 
 </details>
 
+## Awards
+
+The teams in the first three places of the final ranking receive prizes.
+
 ## Organizers and contact
 
 | organizer | email |
