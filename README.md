@@ -255,6 +255,8 @@ Like the UAV testing tracks held at SBFT and ICST since 2024 ([SBFT 2024](https:
 | Mohammad Sabouri (AI4I) | mohammad.sabouri@ai4i.it |
 | Yahya Momtaz (AI4I) | yahya.momtaz@ai4i.it |
 
+The organizers use the same stack in their own research and maintain it across editions. Updates are made between editions ([issue #1](https://github.com/IDeaLS-Lab/uav-testing-track-2027/issues/1)). The data, the scorer and the results of each edition stay archived in this repository.
+
 Open an issue here for questions about the rules, the starter kit or the evaluation. Anything that would reveal an approach to other entrants should be raised with the organizers privately.
 
 ## License
