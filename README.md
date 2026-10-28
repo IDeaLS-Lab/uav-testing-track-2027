@@ -65,7 +65,7 @@ The system under test is the same for every submission, so a difference in score
 
 *Flight c0017 from the training data. After waypoint W4 a rotor strikes a placed pole, which is recorded as the mechanism (pole, rotor, turn).*
 
-A failure is a **collision** between the vehicle and the scene's collision geometry: a placed pole, a tree or the terrain. The collision ends the flight and is recorded as a **mechanism**: the object struck (pole, tree, terrain), the vehicle part (body, rotor), and the route phase (turn if the strike is within 3.0 m of a waypoint, leg otherwise). There are twelve mechanisms.
+A failure is a **collision** between the vehicle and the scene's collision geometry: a placed pole, a tree or the terrain. The collision ends the flight and is recorded as a **mechanism**: the object struck (pole, tree, terrain), the vehicle part (body, rotor) and the route phase (turn if the strike is within 3.0 m of a waypoint, leg otherwise). There are twelve mechanisms. A mechanism records what was struck, with which part and in which phase; it does not record whether the obstacle was missing from the map. Telling perception failures from planning failures apart is one of the questions the track studies.
 
 - Contacts within 0.5 s of the terminating contact belong to the same strike, so one flight can reach more than one mechanism.
 - Reaching the goal, running out of mission time, or passing close to an obstacle without touching it is not a failure.
