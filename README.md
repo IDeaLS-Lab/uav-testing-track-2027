@@ -96,6 +96,8 @@ Eight diagnostics are reported with every score. There is no weighted total.
 
 The validator is the only gate: a submission it rejects is not flown. Entries are ordered by failure breadth averaged over the three evaluations, and an entry within the noise band of a placement's leader shares that placement. Ties are not broken, and entries inside a shared placement are listed alphabetically. The band is published with the board. For a pair of entries it is the half-width of the 95% Welch t interval for the difference of their mean breadths over three evaluations; between the sample tools it ranges from 0.094 to 0.146, and the board uses the widest, 0.146. A band below 0.094 is used only if more than three independent evaluations support it.
 
+The scorer and the leaderboard rule used at evaluation are in `scoring/` (`f11_score_v1.py` and `f11_leaderboard_v1.py`). They read the per-flight records, which are released with the results after the final evaluation, so the ranking can be recomputed independently.
+
 ## Scoreboard
 
 Four sample tools, each evaluated three times at the full budget:
