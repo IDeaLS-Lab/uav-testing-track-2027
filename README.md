@@ -11,20 +11,6 @@ git clone --single-branch https://github.com/IDeaLS-Lab/uav-testing-track-2027.g
 cd uav-testing-track-2027
 ```
 
-## Contents
-
-1. [Important dates](#important-dates)
-2. [How a submission is evaluated](#how-a-submission-is-evaluated)
-3. [What counts as a failure](#what-counts-as-a-failure)
-4. [Scoring](#scoring)
-5. [Scoreboard](#scoreboard)
-6. [Building a generator](#building-a-generator)
-7. [Rules](#rules)
-8. [Data](#data)
-9. [Submitting](#submitting)
-10. [Organizers and contact](#organizers-and-contact)
-11. [License](#license)
-
 ## Important dates
 
 Tentative, following the ICST 2027 Challenge Competition Track schedule. Deadlines are anywhere on Earth (UTC-12).
@@ -67,9 +53,7 @@ The system under test is the same for every submission, so a difference in score
 
 A failure is a **collision** between the vehicle and the scene's collision geometry: a placed pole, a tree or the terrain. The collision ends the flight and is recorded as a **mechanism**: the object struck (pole, tree, terrain), the vehicle part (body, rotor) and the route phase (turn if the strike is within 3.0 m of a waypoint, leg otherwise). There are twelve mechanisms. A mechanism records what was struck, with which part and in which phase; it does not record whether the obstacle was missing from the map. Telling perception failures from planning failures apart is one of the questions the track studies.
 
-- Contacts within 0.5 s of the terminating contact belong to the same strike, so one flight can reach more than one mechanism.
-- Reaching the goal, running out of mission time, or passing close to an obstacle without touching it is not a failure.
-- A collision without readable contact evidence counts as a crash but reaches no mechanism.
+Contacts within 0.5 s of the terminating contact belong to the same strike, so one flight can reach more than one mechanism. Passing close to an obstacle without touching it is not a failure. A collision without readable contact evidence counts as a crash but reaches no mechanism.
 
 ## Scoring
 
@@ -83,22 +67,11 @@ breadth = mean over the two bands of ( mean over the 12 mechanisms of min(1, sqr
 
 where `r` is the share of that band's flights that reach the mechanism. An empty band scores zero, so twenty scenarios at one lane width give away half the score. Credit per mechanism saturates, so reaching a new mechanism is worth more than repeating one. Crash count is not ranked, because crash rate and failure breadth can order generators differently: among the sample tools, the random sampler has the lowest crash rate (0.250) and the second-highest breadth (0.306).
 
-Eight diagnostics are reported with every score. There is no weighted total.
+Eight further diagnostics, among them crash rate, severity, diversity and validity, are shown on the site with every score. There is no weighted total.
 
-| measure | definition |
-| --- | --- |
-| `mechanism` | share of the six (object, vehicle part) pairs reached at least once |
-| `mech_rarity` | coverage of the six pairs, with double weight on a pair no sample tool reached |
-| `novelty` | share of the six pairs reached that no sample tool reached |
-| `severity` | mean of `clip(1 - m / 1.5)` over flights, with `m` the minimum true clearance |
-| `crash` | share of valid flights ending in a collision |
-| `output_div` | spread of the flown paths |
-| `input_div` | spread of the declared scenario parameters |
-| `validity` | share of the twenty scenarios whose flight produced a usable record, averaged over the evaluations |
+Entries are ordered by failure breadth averaged over the three evaluations. An entry within the noise band of a placement's leader shares that placement and ties are not broken. The band is the half-width of the 95% Welch t interval for the difference of two mean breadths; between the sample tools it ranges from 0.094 to 0.146 and the board uses 0.146.
 
-The validator is the only gate: a submission it rejects is not flown. Entries are ordered by failure breadth averaged over the three evaluations; an entry within the noise band of a placement's leader shares that placement. Ties are not broken. Entries inside a shared placement are listed alphabetically. The band is published with the board. For a pair of entries it is the half-width of the 95% Welch t interval for the difference of their mean breadths over three evaluations; between the sample tools it ranges from 0.094 to 0.146. The board uses the widest, 0.146. A band below 0.094 is used only if more than three independent evaluations support it.
-
-The scorer and the leaderboard rule used at evaluation are in `scoring/` (`f11_score_v1.py` and `f11_leaderboard_v1.py`). They read the per-flight records, which are released with the results after the final evaluation, so the ranking can be recomputed independently.
+The scorer and the leaderboard rule are in `scoring/`. The per-flight records are released with the results, so the ranking can be recomputed independently.
 
 ## Scoreboard
 
@@ -111,7 +84,7 @@ Four sample tools, each evaluated three times at the full budget, set the refere
 | 1 | neural network | sample tool | 0.300 | 0.323, 0.346, 0.233 | 0.499 | 0.933 |
 | 1 | random sampler | sample tool | 0.306 | 0.292, 0.375, 0.250 | 0.250 | 1.000 |
 
-All four lie within the noise band of the leader and share the first placement, so they are listed alphabetically. To be placed ahead of them, a submission needs a breadth more than one band above 0.354, that is, above 0.500. The site lists the other diagnostics for each tool, except rarity and novelty, which are measured against the sample tools themselves.
+All four lie within the noise band of the leader and share the first placement. To be placed ahead of them, a submission needs a breadth above 0.500.
 
 ## Building a generator
 
@@ -131,7 +104,7 @@ docker run --rm --network none --read-only --tmpfs /tmp:rw,size=64m \
 
 python3 validate.py out/submission.json     # will it be accepted?
 python3 preflight.py out/submission.json    # what can be measured before flying
-python3 estimate.py out/submission.json     # rough estimate of the rank key
+python3 estimate.py out/submission.json     # rough estimate of the rank key (off by 0.07 on average)
 ```
 
 These are the flags used at evaluation. To write your own generator, copy `starter_kit/` and replace `generate.py`:
@@ -178,16 +151,12 @@ A scenario looks like this. `seed` selects the procedural forest, `corridor` is 
 }
 ```
 
-### Checking before you submit
-
-- `validate.py` is the validator used at evaluation; a rejection there rejects the submission.
-- `preflight.py` reports what can be measured without flying: `input_div` exactly, how the scenarios divide between the two lane bands, how close the poles sit to the route and the tightest free lateral width.
-- `estimate.py` approximates the rank key and crash rate from the released flights. Against seven generators flown at the full budget it was off by 0.07 on average and by up to 0.16, so it separates large differences only. The score comes only from the evaluation flights in Isaac Sim.
-
 ### Examples
 
-- `examples/random_baseline/` is the smallest generator that passes the validator. It fixes the corridor at 6.0 m, so every scenario falls in the wide band and half the rank key is lost.
-- `examples/svm_generator/` shows how to use the training data: a classifier is fitted locally (`pip install -r requirements.txt`, which installs numpy and scikit-learn, then `python3 train.py ../../data/train/manifest.jsonl -o model.json`), exported as JSON and baked into the image. The image itself needs neither package. It places every scenario in the tight band and loses the other half.
+- `examples/random_baseline/` is the smallest generator that passes the validator.
+- `examples/svm_generator/` fits a classifier on the training data (`pip install -r requirements.txt`, then `python3 train.py ../../data/train/manifest.jsonl -o model.json`) and bakes it into the image as JSON.
+
+Each example uses only one lane band and so loses half the rank key.
 
 ## Rules
 
@@ -210,21 +179,19 @@ A scenario looks like this. `seed` selects the procedural forest, `corridor` is 
 | voxel | 0.05 to 0.20 m |
 | pole_radius, pole_height | 0.02 to 0.10 m, 1.0 to 5.0 m |
 
-The turn limit is the most common reason for rejection; check it on the rounded coordinates, since those are written to the file. Tight lanes are not refused: the validator reports lanes that leave less than 0.40 m of free width and marks those under 0.05 m as blocked, but a blocked lane is still admissible because the planner can detour through the forest.
-
-Training and pre-processing are allowed beforehand, for example on `data/train`, provided everything the generator needs is inside the image.
+The turn limit is the most common reason for rejection; check it on the rounded coordinates. A blocked lane is still admissible, because the planner can detour through the forest. Training beforehand is allowed, provided everything the generator needs is inside the image.
 
 ## Data
 
-`data/train/manifest.jsonl` holds 357 flight records: the scenario flown, the route, the obstacles and the outcome. For each collision it also lists the mechanisms reached (null when the contact record could not be read). `data/train/splits.json` records the fixed train and validation split. This is the whole training signal. The records serve training and `estimate.py`, not evaluation: every submission is scored on new flights of its own scenarios. They reach 10 of the 12 mechanisms; no released flight has a rotor striking the terrain.
+`data/train/manifest.jsonl` holds 357 flight records: the scenario flown, the route, the obstacles, the outcome and the mechanisms reached. `data/train/splits.json` gives the train and validation split. The records serve training and `estimate.py`, not evaluation: every submission is scored on new flights of its own scenarios. They reach 10 of the 12 mechanisms; no released flight has a rotor striking the terrain.
 
-The full collection, with depth images, maps, autopilot logs and scene files (336 scenarios, 17.8 GB), is on Hugging Face at [`merabro/uav-perception-testing-track-2027`](https://huggingface.co/datasets/merabro/uav-perception-testing-track-2027). It is not needed to write a generator. To get access, open the dataset page while logged in to Hugging Face and fill in the short request form (name, affiliation and intended use); the organizers approve each request by hand.
+The full collection with depth images, maps and autopilot logs (17.8 GB) is on Hugging Face at [`merabro/uav-perception-testing-track-2027`](https://huggingface.co/datasets/merabro/uav-perception-testing-track-2027). It is not needed to write a generator. Access is granted on request through the form on the dataset page.
 
 ## Submitting
 
-1. Build the generator from `starter_kit/` and check it with `validate.py`, `preflight.py` and, if you like, `estimate.py`.
+1. Build the generator from `starter_kit/` and check it with `validate.py`.
 2. Run the container twice on one seed and confirm that `md5sum out/submission.json` matches.
-3. Open a pull request that adds `submissions/<team-name>/` with the Dockerfile, `generate.py`, any files the image needs and a `README.md` of about one page describing the approach. The team name must be unique; do not modify other folders. Every evaluated submission counts toward the team's limit.
+3. Open a pull request that adds `submissions/<team-name>/` with the Dockerfile, `generate.py`, any files the image needs and a `README.md` of about one page describing the approach. Every evaluated submission counts toward the team's limit.
 
 Submissions close on 15 January 2027, anywhere on Earth. Participating teams may be invited to submit a tool paper of 2 to 4 pages, including references, in the ICST format. Results are presented at ICST 2027.
 
@@ -255,10 +222,10 @@ Like the UAV testing tracks held at SBFT and ICST since 2024 ([SBFT 2024](https:
 | Mohammad Sabouri (AI4I) | mohammad.sabouri@ai4i.it |
 | Yahya Momtaz (AI4I) | yahya.momtaz@ai4i.it |
 
-The organizers use the same stack in their own research and maintain it across editions. Updates are made between editions ([issue #1](https://github.com/IDeaLS-Lab/uav-testing-track-2027/issues/1)). The data, the scorer and the results of each edition stay archived in this repository.
+The organizers use the same stack in their own research and maintain it across editions; updates are made between editions ([issue #1](https://github.com/IDeaLS-Lab/uav-testing-track-2027/issues/1)). The data, the scorer and the results of each edition stay archived in this repository.
 
-Open an issue here for questions about the rules, the starter kit or the evaluation. Anything that would reveal an approach to other entrants should be raised with the organizers privately.
+Open an issue for questions about the rules or the starter kit; anything that would reveal an approach should go to the organizers by email.
 
 ## License
 
-The code in this repository (the starter kit, the examples and the checking tools) is released under the MIT License in [`LICENSE`](LICENSE). The flight records in `data/` are released under CC BY 4.0, whose full text is in [`data/LICENSE`](data/LICENSE).
+Code: MIT ([`LICENSE`](LICENSE)). Flight records in `data/`: CC BY 4.0 ([`data/LICENSE`](data/LICENSE)).
