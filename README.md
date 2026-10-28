@@ -102,7 +102,7 @@ The scorer and the leaderboard rule used at evaluation are in `scoring/` (`f11_s
 
 ## Scoreboard
 
-Four sample tools, each evaluated three times at the full budget:
+Four sample tools, each evaluated three times at the full budget, set the reference level a submission is compared with; the two examples in `examples/` are the starting points to copy:
 
 | place | tool | submitted by | mech_rate | three evaluations | crash | validity |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -216,7 +216,7 @@ Training and pre-processing are allowed beforehand, for example on `data/train`,
 
 ## Data
 
-`data/train/manifest.jsonl` holds 357 flight records: the scenario flown, the route, the obstacles and the outcome. For each collision it also lists the mechanisms reached (null when the contact record could not be read). `data/train/splits.json` records the fixed train and validation split. This is the whole training signal.
+`data/train/manifest.jsonl` holds 357 flight records: the scenario flown, the route, the obstacles and the outcome. For each collision it also lists the mechanisms reached (null when the contact record could not be read). `data/train/splits.json` records the fixed train and validation split. This is the whole training signal. The records serve training and `estimate.py`, not evaluation: every submission is scored on new flights of its own scenarios. They reach 10 of the 12 mechanisms; no released flight has a rotor striking the terrain.
 
 The full collection, with depth images, maps, autopilot logs and scene files (336 scenarios, 17.8 GB), is on Hugging Face at [`merabro/uav-perception-testing-track-2027`](https://huggingface.co/datasets/merabro/uav-perception-testing-track-2027). It is not needed to write a generator. To get access, open the dataset page while logged in to Hugging Face and fill in the short request form (name, affiliation and intended use); the organizers approve each request by hand.
 
