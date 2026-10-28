@@ -139,12 +139,28 @@ seed = int(os.environ["F11_SEED"])
 n    = int(os.environ["F11_N"])
 rng  = random.Random(seed)          # the only source of randomness
 
+def my_scenario(rng, i):
+    y = round(rng.uniform(-10.0, 10.0), 2)
+    return {
+        "id": f"s{i:03d}", "seed": rng.randint(1, 100000),
+        "area": 20.0, "voxel": 0.10,
+        "corridor": rng.choice([2.0, 3.0, 4.5, 6.0, 9.0, 12.0]),
+        "density": round(rng.uniform(0.012, 0.120), 4),
+        "wind": round(rng.uniform(0.0, 8.0), 1),
+        "ego_max_vel": round(rng.uniform(1.2, 3.5), 2),
+        "alt": round(rng.uniform(0.5, 4.0), 3),
+        "patrol": [[-12.0, y], [12.0, y]],
+        "obstacle": {"type": "poles", "xy": [], "radius": 0.06, "height": 3.0},
+    }
+
 scenarios = [my_scenario(rng, i) for i in range(n)]
 
 os.makedirs("/out", exist_ok=True)
 with open("/out/submission.json", "w") as f:
     json.dump({"submission": "my-generator", "scenarios": scenarios}, f, indent=1, sort_keys=True)
 ```
+
+This example passes `validate.py`, but its straight routes have no turns and no poles, so it reaches few mechanisms. `starter_kit/generate.py` builds routes with turns and places poles in the lane.
 
 A scenario looks like this. `seed` selects the procedural forest, `corridor` is the width of the lane cleared along the route, and `patrol` is the commanded route:
 
