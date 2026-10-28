@@ -228,6 +228,8 @@ The full collection, with depth images, maps, autopilot logs and scene files (33
 
 Submissions close on 15 January 2027, anywhere on Earth. Participating teams may be invited to submit a tool paper of 2 to 4 pages, including references, in the ICST format. Results are presented at ICST 2027.
 
+Like the UAV testing tracks held at SBFT and ICST since 2024 ([SBFT 2024](https://doi.org/10.1145/3643659.3643931), [SBFT 2025](https://doi.org/10.1109/SBFT66712.2025.00007), [ICST 2025](https://doi.org/10.1109/ICST62969.2025.10988922), [SBFT 2026](https://doi.org/10.1145/3786155.3795696), [ICST 2026](https://doi.org/10.1109/ICST69053.2026.00073)), this track asks participants to submit test generators. It keeps that task and changes the system under test and the failure oracle.
+
 <details>
 <summary>Differences from the ICST 2026 UAV testing track</summary>
 
