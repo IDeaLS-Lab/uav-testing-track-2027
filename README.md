@@ -23,6 +23,7 @@ cd uav-testing-track-2027
 8. [Data](#data)
 9. [Submitting](#submitting)
 10. [Organizers and contact](#organizers-and-contact)
+11. [License](#license)
 
 ## Important dates
 
@@ -223,3 +224,7 @@ Submissions close on 15 January 2027, anywhere on Earth. Participating teams may
 Prakash Aryan, Claudia Ceci, Roberto Riccio, Syed Shaihan, Mohammad Sabouri and Yahya Momtaz, Sebastiano Panichella.
 
 Open an issue here for questions about the rules, the starter kit or the evaluation. Anything that would reveal an approach to other entrants should be raised with the organizers privately.
+
+## License
+
+The code in this repository (the starter kit, the examples and the checking tools) is released under the MIT License in [`LICENSE`](LICENSE). The flight records in `data/` are released under CC BY 4.0, whose full text is in [`data/LICENSE`](data/LICENSE).
