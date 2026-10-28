@@ -9,7 +9,7 @@
 # cannot fetch scenarios at evaluation time or write anywhere but /out. It is run twice on the same
 # seed and the two outputs must be byte-identical: a generator that is not reproducible cannot be
 # audited after the fact.
-FROM python:3.11-slim
+FROM python:3.11.18-slim@sha256:ffe4b0c76963e64f05484d74dbb3f67fad1effcf3c5c22c2235f0fafc8a9c98f
 
 # numpy is present because most generators use it. Further dependencies may be added freely.
 RUN pip install --no-cache-dir numpy==2.1.3 && \
