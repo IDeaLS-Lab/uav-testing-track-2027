@@ -44,7 +44,7 @@ Tentative, following the ICST 2027 Challenge Competition Track schedule. Deadlin
 
 Each submission is evaluated as it arrives: the generator runs on a seed that is not disclosed in advance and writes twenty scenarios. `validate.py` checks them before any simulation time is spent. Each accepted scenario is flown three times, sixty flights in all, with a limit of 1320 s per flight including simulator start-up. A flight without a usable record counts as invalid for that repeat and is not re-flown.
 
-Scores appear on the live scoreboard of the track site as soon as they are computed. A team may submit up to a maximum number of times, announced when the competition opens. After the deadline each team's best-scoring submission is evaluated again on a new undisclosed seed; that evaluation decides the final ranking, so a score that was high by chance on the live board does not carry over.
+Scores appear on the live scoreboard of the track site as soon as they are computed. A team may submit up to five times. After the deadline each team's best-scoring submission is evaluated again on a new undisclosed seed; that evaluation decides the final ranking, so a score that was high by chance on the live board does not carry over.
 
 The system under test is the same for every submission, so a difference in score reflects a difference between generators:
 
@@ -191,6 +191,8 @@ A scenario looks like this. `seed` selects the procedural forest, `corridor` is 
 
 | rule | value |
 | --- | --- |
+| submissions per team | at most 5 before the deadline |
+| software | Isaac Sim 6.0.1 and the stack above, unchanged from the opening to the final evaluation |
 | scenarios per submission | exactly 20, at least 5 distinct recipes ignoring the forest seed |
 | waypoints | 2 to 6 |
 | turn at each intermediate waypoint | 25 to 160° |
