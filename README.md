@@ -1,6 +1,6 @@
 # UAV Perception Testing Track
 
-A tool competition on test scenario generation for autonomous UAVs, proposed for the [ICST 2027 Challenge Competition Track](https://conf.researchr.org/track/icst-2027/icst-2027-challenge-competition-track).
+A tool competition on test scenario generation for autonomous UAVs, part of the [ICST 2027 Challenge Competition Track](https://conf.researchr.org/track/icst-2027/icst-2027-challenge-competition-track#pagetab-c008f3db-b76a-438a-8aaa-eb62b8f7219b).
 
 A submission is a **scenario generator**. It writes forest scenarios: a route, the width of the lane cleared along it, poles placed near the route, tree density, wind, speed and altitude. Each scenario is flown in Isaac Sim by a fixed autonomy stack. Generators are ranked by the **distinct failure mechanisms** their scenarios reach.
 
