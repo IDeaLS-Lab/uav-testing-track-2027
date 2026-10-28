@@ -220,7 +220,7 @@ Like the UAV testing tracks held at SBFT and ICST since 2024 ([SBFT 2024](https:
 | Syed Shaihan (AI4I) | syed.shaihan@ai4i.it |
 | Mohammad Sabouri (AI4I) | mohammad.sabouri@ai4i.it |
 | Yahya Momtaz (AI4I) | yahya.momtaz@ai4i.it |
-| Sebastiano Panichella (AI4I and University of Bern) | sebastiano.panichella@ai4i.it |
+| Sebastiano Panichella (AI4I) | sebastiano.panichella@ai4i.it |
 
 The organizers use the same stack in their own research and maintain it across editions; updates are made between editions ([issue #1](https://github.com/IDeaLS-Lab/uav-testing-track-2027/issues/1)). The data, the scorer and the results of each edition stay archived in this repository.
 
