@@ -90,6 +90,8 @@ All four lie within the noise band of the leader and share the first placement. 
 
 A generator is a container image. It reads `F11_SEED` and `F11_N` from the environment, writes the scenarios to `/out/submission.json` and exits 0. At evaluation it has no network, a read-only filesystem with 64 MB of writable `/tmp`, 512 MB of memory, one CPU, no root and 600 s. **The same seed must produce the same bytes**, so every random draw is seeded from `F11_SEED` and the clock, the filesystem and the network are not read.
 
+No GPU or Isaac Sim is needed to take part. A generator is built and run with Docker; `validate.py`, `preflight.py` and `estimate.py` use only the Python standard library.
+
 ### Quick start
 
 ```bash
