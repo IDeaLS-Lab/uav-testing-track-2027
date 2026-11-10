@@ -195,6 +195,8 @@ The full collection with depth images, maps and autopilot logs (17.8 GB) is on H
 2. Run the container twice on one seed and confirm that `md5sum out/submission.json` matches.
 3. Open a pull request that adds `submissions/<team-name>/` with the Dockerfile, `generate.py`, any files the image needs and a `README.md` of about one page describing the approach. Every evaluated submission counts toward the team's limit.
 
+A team that wants to keep its approach confidential until the deadline can submit privately instead, by sharing a private GitHub repository with the organizers as collaborators or by sending a restricted-access link to the same files. Write to the organizers by email (see [Organizers and contact](#organizers-and-contact)) before the first private submission to agree which accounts to add. Private submissions are evaluated and scored in the same way as pull requests.
+
 Submissions close on 15 January 2027, anywhere on Earth. Participating teams may be invited to submit a tool paper of 2 to 4 pages, including references, in the ICST format. Results are presented at ICST 2027.
 
 Like the UAV testing tracks held at SBFT and ICST since 2024 ([SBFT 2024](https://doi.org/10.1145/3643659.3643931), [SBFT 2025](https://doi.org/10.1109/SBFT66712.2025.00007), [ICST 2025](https://doi.org/10.1109/ICST62969.2025.10988922), [SBFT 2026](https://doi.org/10.1145/3786155.3795696), [ICST 2026](https://doi.org/10.1109/ICST69053.2026.00073)), this track asks participants to submit test generators. It keeps that task and changes the system under test and the failure oracle.
