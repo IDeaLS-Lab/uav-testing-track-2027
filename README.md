@@ -69,9 +69,9 @@ where `r` is the share of that band's flights that reach the mechanism. An empty
 
 Eight further diagnostics, among them crash rate, severity, diversity and validity, are shown on the site with every score. There is no weighted total.
 
-Entries are ordered by failure breadth averaged over the three evaluations. An entry within the noise band of a placement's leader shares that placement and ties are not broken. The band is the half-width of the 95% Welch t interval for the difference of two mean breadths; between the sample tools it ranges from 0.094 to 0.146 and the board uses 0.146.
+Entries are ranked by failure breadth averaged over the three evaluations, highest first. Entries with equal breadth share a place.
 
-The scorer and the leaderboard rule are in `scoring/`. The per-flight records are released with the results, so the ranking can be recomputed independently.
+The scorer is in `scoring/`. The per-flight records are released with the results, so the ranking can be recomputed independently.
 
 ## Scoreboard
 
@@ -79,12 +79,12 @@ Four sample tools, each evaluated three times at the full budget, set the refere
 
 | place | tool | submitted by | mech_rate | three evaluations | crash | validity |
 | --- | --- | --- | --- | --- | --- | --- |
-| 1 | geometry rule | sample tool | 0.304 | 0.354, 0.276, 0.281 | 0.500 | 1.000 |
 | 1 | learned proposer | sample tool | 0.354 | 0.373, 0.340, 0.349 | 0.600 | 1.000 |
-| 1 | neural network | sample tool | 0.300 | 0.323, 0.346, 0.233 | 0.499 | 0.933 |
-| 1 | random sampler | sample tool | 0.306 | 0.292, 0.375, 0.250 | 0.250 | 1.000 |
+| 2 | random sampler | sample tool | 0.306 | 0.292, 0.375, 0.250 | 0.250 | 1.000 |
+| 3 | geometry rule | sample tool | 0.304 | 0.354, 0.276, 0.281 | 0.500 | 1.000 |
+| 4 | neural network | sample tool | 0.300 | 0.323, 0.346, 0.233 | 0.499 | 0.933 |
 
-All four lie within the noise band of the leader and share the first placement. To be placed ahead of them, a submission needs a breadth above 0.500.
+To be placed ahead of them, a submission needs a breadth above 0.354.
 
 ## Building a generator
 
