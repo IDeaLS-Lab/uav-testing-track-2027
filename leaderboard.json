@@ -4,28 +4,6 @@
  "scorer": "f11_score_v1",
  "arms": [
   {
-   "name": "geometric",
-   "label": "Geometry rule",
-   "strategy": "Fixed rule: narrow lanes, poles near the route, low altitude",
-   "runs": [
-    0.3545,
-    0.2763,
-    0.2814
-   ],
-   "metrics": {
-    "mech_rate": 0.304,
-    "mechanism": 0.889,
-    "severity": 0.674,
-    "crash": 0.5,
-    "output_div": 0.297,
-    "input_div": 0.654,
-    "validity": 1.0
-   },
-   "flights": 60,
-   "place": 1,
-   "submitted_by": "Sample tool"
-  },
-  {
    "name": "ml",
    "label": "Learned proposer",
    "strategy": "Gradient boosting trained on flown outcomes",
@@ -48,28 +26,6 @@
    "submitted_by": "Sample tool"
   },
   {
-   "name": "dl",
-   "label": "Neural network",
-   "strategy": "Multilayer perceptron trained on the same outcomes",
-   "runs": [
-    0.3226,
-    0.3459,
-    0.2325
-   ],
-   "metrics": {
-    "mech_rate": 0.3,
-    "mechanism": 0.778,
-    "severity": 0.572,
-    "crash": 0.499,
-    "output_div": 0.296,
-    "input_div": 0.442,
-    "validity": 0.933
-   },
-   "flights": 56,
-   "place": 1,
-   "submitted_by": "Sample tool"
-  },
-  {
    "name": "random",
    "label": "Random sampler",
    "strategy": "Uniform over the legal bounds",
@@ -88,10 +44,54 @@
     "validity": 1.0
    },
    "flights": 60,
-   "place": 1,
+   "place": 2,
+   "submitted_by": "Sample tool"
+  },
+  {
+   "name": "geometric",
+   "label": "Geometry rule",
+   "strategy": "Fixed rule: narrow lanes, poles near the route, low altitude",
+   "runs": [
+    0.3545,
+    0.2763,
+    0.2814
+   ],
+   "metrics": {
+    "mech_rate": 0.304,
+    "mechanism": 0.889,
+    "severity": 0.674,
+    "crash": 0.5,
+    "output_div": 0.297,
+    "input_div": 0.654,
+    "validity": 1.0
+   },
+   "flights": 60,
+   "place": 3,
+   "submitted_by": "Sample tool"
+  },
+  {
+   "name": "dl",
+   "label": "Neural network",
+   "strategy": "Multilayer perceptron trained on the same outcomes",
+   "runs": [
+    0.3226,
+    0.3459,
+    0.2325
+   ],
+   "metrics": {
+    "mech_rate": 0.3,
+    "mechanism": 0.778,
+    "severity": 0.572,
+    "crash": 0.499,
+    "output_div": 0.296,
+    "input_div": 0.442,
+    "validity": 0.933
+   },
+   "flights": 56,
+   "place": 4,
    "submitted_by": "Sample tool"
   }
  ],
  "entries": [],
- "tie_note": "All four lie within the noise band of the leader and share the first placement, so they are listed alphabetically."
+ "tie_note": "Tools are ranked by failure breadth, highest first."
 }
