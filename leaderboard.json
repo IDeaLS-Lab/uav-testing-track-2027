@@ -1,5 +1,5 @@
 {
- "round": "Reference generators",
+ "round": "Round 1",
  "budget": "20 scenarios, 3 evaluations each",
  "scorer": "f11_score_v1",
  "arms": [
@@ -22,7 +22,7 @@
     "validity": 1.0
    },
    "flights": 60,
-   "place": 1,
+   "place": 2,
    "submitted_by": "Sample tool"
   },
   {
@@ -44,7 +44,7 @@
     "validity": 1.0
    },
    "flights": 60,
-   "place": 2,
+   "place": 3,
    "submitted_by": "Sample tool"
   },
   {
@@ -66,7 +66,7 @@
     "validity": 1.0
    },
    "flights": 60,
-   "place": 3,
+   "place": 4,
    "submitted_by": "Sample tool"
   },
   {
@@ -88,10 +88,57 @@
     "validity": 0.933
    },
    "flights": 56,
-   "place": 4,
+   "place": 5,
    "submitted_by": "Sample tool"
   }
  ],
- "entries": [],
- "tie_note": "Tools are ranked by failure breadth, highest first."
+ "entries": [
+  {
+   "name": "krichi",
+   "label": "krichi-boundary-v1",
+   "strategy": "Private submission",
+   "team": "KRICHI",
+   "submitted_by": "KRICHI",
+   "runs": [
+    0.3333,
+    0.4167,
+    0.3333
+   ],
+   "metrics": {
+    "mech_rate": 0.361,
+    "mechanism": 0.778,
+    "severity": 0.763,
+    "crash": 0.749,
+    "output_div": 0.185,
+    "input_div": 0.574,
+    "validity": 0.933
+   },
+   "flights": 56,
+   "place": 1
+  },
+  {
+   "name": "kavi",
+   "label": "mechanism-portfolio-v0",
+   "strategy": "Mechanism-targeted portfolio: ten scenarios per lane band, each from a recipe aimed at specific failure mechanisms",
+   "team": "Kavinda Rathnayaka",
+   "submitted_by": "Kavinda Rathnayaka",
+   "runs": [
+    0.2917,
+    0.25,
+    0.2917
+   ],
+   "metrics": {
+    "mech_rate": 0.278,
+    "mechanism": 0.667,
+    "severity": 0.886,
+    "crash": 0.674,
+    "output_div": 0.225,
+    "input_div": 0.382,
+    "validity": 0.917
+   },
+   "flights": 55,
+   "place": 6
+  }
+ ],
+ "tie_note": "Entries and sample tools are ranked together by failure breadth, highest first."
 }
