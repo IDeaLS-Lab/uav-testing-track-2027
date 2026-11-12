@@ -75,16 +75,18 @@ The scorer is in `scoring/`. The per-flight records are released with the result
 
 ## Scoreboard
 
-Four sample tools, each evaluated three times at the full budget, set the reference level a submission is compared with; the two examples in `examples/` are the starting points to copy:
+Submissions are ranked together with four sample tools, each evaluated three times at the full budget; the two examples in `examples/` are the starting points to copy:
 
 | place | tool | submitted by | mech_rate | three evaluations | crash | validity |
 | --- | --- | --- | --- | --- | --- | --- |
-| 1 | learned proposer | sample tool | 0.354 | 0.373, 0.340, 0.349 | 0.600 | 1.000 |
-| 2 | random sampler | sample tool | 0.306 | 0.292, 0.375, 0.250 | 0.250 | 1.000 |
-| 3 | geometry rule | sample tool | 0.304 | 0.354, 0.276, 0.281 | 0.500 | 1.000 |
-| 4 | neural network | sample tool | 0.300 | 0.323, 0.346, 0.233 | 0.499 | 0.933 |
+| 1 | krichi-boundary-v1 | KRICHI | 0.361 | 0.333, 0.417, 0.333 | 0.749 | 0.933 |
+| 2 | learned proposer | sample tool | 0.354 | 0.373, 0.340, 0.349 | 0.600 | 1.000 |
+| 3 | random sampler | sample tool | 0.306 | 0.292, 0.375, 0.250 | 0.250 | 1.000 |
+| 4 | geometry rule | sample tool | 0.304 | 0.354, 0.276, 0.281 | 0.500 | 1.000 |
+| 5 | neural network | sample tool | 0.300 | 0.323, 0.346, 0.233 | 0.499 | 0.933 |
+| 6 | mechanism-portfolio-v0 | Kavinda Rathnayaka | 0.278 | 0.292, 0.250, 0.292 | 0.674 | 0.917 |
 
-To be placed ahead of them, a submission needs a breadth above 0.354.
+The flight records of every evaluated submission are published at [huggingface.co/datasets/merabro/uav-testing-track-2027-evaluations](https://huggingface.co/datasets/merabro/uav-testing-track-2027-evaluations).
 
 ## Building a generator
 
