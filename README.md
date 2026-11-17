@@ -79,7 +79,7 @@ Submissions are ranked together with four sample tools, each evaluated three tim
 
 | place | tool | submitted by | mech_rate | three evaluations | crash | validity |
 | --- | --- | --- | --- | --- | --- | --- |
-| 1 | krichi-boundary-v4 | KRICHI | 0.486 | 0.417, 0.458, 0.583 | 0.648 | 0.900 |
+| 1 | krichi-boundary-v5 | KRICHI | 0.639 | 0.667, 0.583, 0.667 | 0.794 | 0.983 |
 | 2 | learned proposer | sample tool | 0.354 | 0.373, 0.340, 0.349 | 0.600 | 1.000 |
 | 3 | random sampler | sample tool | 0.306 | 0.292, 0.375, 0.250 | 0.250 | 1.000 |
 | 4 | geometry rule | sample tool | 0.304 | 0.354, 0.276, 0.281 | 0.500 | 1.000 |
