@@ -95,25 +95,25 @@
  "entries": [
   {
    "name": "krichi",
-   "label": "krichi-boundary-v4",
+   "label": "krichi-boundary-v5",
    "strategy": "Private submission",
    "team": "KRICHI",
    "submitted_by": "KRICHI",
    "runs": [
-    0.4167,
-    0.4583,
-    0.5833
+    0.6667,
+    0.5833,
+    0.6667
    ],
    "metrics": {
-    "mech_rate": 0.486,
+    "mech_rate": 0.639,
     "mechanism": 0.833,
-    "severity": 0.761,
-    "crash": 0.648,
-    "output_div": 0.327,
-    "input_div": 0.521,
-    "validity": 0.9
+    "severity": 0.587,
+    "crash": 0.794,
+    "output_div": 0.289,
+    "input_div": 0.536,
+    "validity": 0.983
    },
-   "flights": 54,
+   "flights": 59,
    "place": 1
   },
   {
